@@ -76,3 +76,78 @@ $util.toJson($ctx.result.items)
 #Response
 $util.toJson($ctx.result)
 ```
+#### Queries and Mutations
+
+##### List of Movies
+```
+query{
+  getMovies{
+      id
+      name
+      producer
+      rating
+      rank
+      }
+   }
+ ```
+ ##### Get Movie By Id
+ ```
+ query{
+  getMovie(id:"7hsdyyuewuewA"){
+     id
+     name
+     producer
+     rating
+     rank
+       }
+     }
+```
+##### Add Movie
+```
+mutation{
+  addMovie(name:"Terminator2", producer:"Gale Ann Hurd",rating:8.1, rank:44){
+  name
+  id
+  rating
+  rank
+  producer
+  }
+}
+```
+##### Update Movie
+```
+mutation {
+  updateMovie(id:"5ejjui8df87derre878",name:"Terminator",producer:"Gale Ann Hurd",rating:8.1,rank:19){
+    name
+    id
+    rating
+    rank
+    producer
+  }
+}
+```
+
+##### Delete Movie
+```
+mutation {
+  deleteMovie(id:"5ejjui8df87derre878"){
+    name
+    id
+    rating
+    rank
+    producer
+  }
+}
+```
+##### Subscription
+```
+subscription {
+  notification{
+    name
+    id
+    rating
+    rank
+    producer
+  }
+}
+```
