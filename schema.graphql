@@ -1,0 +1,41 @@
+type Movie {
+     id: ID!
+     name: String!
+     producer: String!
+     rating: Float!
+     rank: Int!
+   }
+
+type Mutation {
+     addMovie(
+	name: String!,
+	producer: String!,
+	rating: Float!,
+	rank: Int!
+	): Movie
+	updateMovie(
+	id: String!,
+	name: String!,
+	producer: String!,
+	rating: Float,
+	rank: Int!
+	): Movie
+	
+    deleteMovie(id: ID!): Movie
+}
+
+type Query {
+   getMovies: [Movie]
+   getMovie(id: ID!): Movie
+ }
+
+type Subscription {
+     notification: Movie
+     @aws_subscribe(mutations: ["addMovie","updateMovie","deleteMovie"])
+}
+
+schema {
+   query: Query
+   mutation: Mutation
+   subscription: Subscription
+}
